@@ -1,4 +1,12 @@
-<h2>User info</h2>
+<h2>Books</h2>
 
-<%= f.file_field :image, accept: "image/*" %>
+<% @books.each do |book| %>
 
+  <div>
+    <%= link_to book_path(book.id) do %>
+      <%= image_tag book.get_image %>
+    <% end %>
+
+    <%= image_tag book.user.get_profile_image(100,100) %>
+
+<% end %>
