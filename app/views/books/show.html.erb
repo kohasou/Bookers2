@@ -1,4 +1,17 @@
 <%= render 'list2', user: @user %>
-<%= render 'list', book: @book %>
+<%= render 'list', book: @book_new %>
 
 <h2>Book detail</h2>
+
+  <%= image_tag @book.user.get_profile_image(100,100) %>
+
+  <%= link_to book_path(@book.id) do %>
+    <%= @book.title %>
+  <% end %>
+
+  <%= @book.body %>
+
+  <% if @book.user == current_user %>
+    <%= link_to "Edit", edit_book_path(@book) %>
+    <%= link_to "Destroy", books_path(@book), method: :delete %>
+  <% end %>
